@@ -1,0 +1,85 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Phạm",
+      "lastName": "Phanh",
+      "email": "phanhne2005@gmail.com",
+      "phone": "0987372863",
+      "password": "12345"
+    },
+    {
+      "id": 2,
+      "firstName": "Phạm",
+      "lastName": "Hà",
+      "email": "ha2005@gmail.com",
+      "phone": "0938842032",
+      "password": "123456"
+    },
+    {
+      "id": 3,
+      "firstName": "Phạm",
+      "lastName": "Hùng",
+      "email": "hung2005@gmail.com",
+      "phone": "0987567893",
+      "password": "1234567"
+    },
+    {
+      "firstName": "Pham",
+      "lastName": "Anh",
+      "email": "ppanh775@gamail.com",
+      "password": "panh2005",
+      "confirmPassword": "panh2005",
+      "id": 4
+    },
+    {
+      "firstName": "Pham",
+      "lastName": "anh",
+      "email": "phamanh12@gmail.com",
+      "password": "panh2005",
+      "confirmPassword": "panh2005",
+      "id": 5
+    },
+    {
+      "firstName": "Pham",
+      "lastName": "Anh",
+      "email": "ppanh77@gamail.com",
+      "password": "panh2005",
+      "confirmPassword": "panh2005",
+      "id": 6
+    },
+    {
+      "firstName": "Pham",
+      "lastName": "anh",
+      "email": "ppanh75@gamail.com",
+      "password": "panh2005",
+      "confirmPassword": "panh2005",
+      "id": 7
+    },
+    {
+      "firstName": "Pham",
+      "lastName": "anh",
+      "email": "phamanh1@gmail.com",
+      "password": "panh2005",
+      "confirmPassword": "panh2005",
+      "id": 8
+    }
+  ]
+}
