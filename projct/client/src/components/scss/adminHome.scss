@@ -1,19 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&di...=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  border: none;
-  outline: none;
-  font-family: "Noto Sans", sans-serif;
-}
 
-#root {
-  display: flex;
-}
 
-.sidebar {
+.sidebar-admin {
   position: sticky;
   top: 0;
   left: 0;
@@ -84,7 +73,7 @@
 }
 
 // Main content
-.main-content{
+.main-content-admin{
     position: relative;
     background: #ebe9e9;
     width: 100%;
@@ -105,7 +94,7 @@
             border-radius: 50%;
         }
         .header-title{
-            color: rgba(113, 99, 186, 255);
+            color: black;
             font-size: 20px;
             display: flex;
             align-items: center;
@@ -255,7 +244,7 @@
             table{
                 width: 100%;     
                 thead{
-                    background: rgba(113, 90, 186, 255);
+                    background: rgba(113, 99, 186, 255);
                     color: #fff;
                     th{
                         padding: 15px;
@@ -277,9 +266,9 @@
                         font-size: 14px;
                         color: #333;
                         img{
-                            width: 40px;
-                            height: 40px;
-                            border-radius: 50%;
+                            width: 150px;
+                            height:200px;
+                            border-radius: 5px;
                         }
                         input{
                             width: 100%;

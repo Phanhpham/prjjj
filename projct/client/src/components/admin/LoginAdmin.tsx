@@ -145,9 +145,9 @@ const LoginAdmin = () => {
     <div className="login-main">
       <div className="login-left">
         <img
-          src="https://noithatdepgiare.vn/upload/sanpham/large/thiet-ke-noi-that-showroom-quan-ao-sang-trong-cao-cap-095-3635-0.jpg"
+          src="https://static.vecteezy.com/system/resources/previews/027/428/014/original/nem-logo-design-inspiration-for-a-unique-identity-modern-elegance-and-creative-design-watermark-your-success-with-the-striking-this-logo-vector.jpg"
           alt="background"
-          style={{ width: "800px", height: "600px" }}
+          style={{ width: "850px", height: "770px" }}
         />
       </div>
       <div className="login-right">
@@ -156,6 +156,7 @@ const LoginAdmin = () => {
             <img
               src="https://static.ybox.vn/2021/12/6/1639833088609-httpswww.canva.comdesignDAEyyZUaL9oRXE44PMfR_WfJquvULhFzAedit%20(5).png"
               alt="logo"
+              style={{width:"200px"}}
             />
           </div>
           <div className="login-center">
@@ -186,7 +187,7 @@ const LoginAdmin = () => {
               <div className="login-center-options">
                 <div className="remember-div">
                   <input type="checkbox" id="remember-checkbox" />
-                  <label htmlFor="remember-checkbox">Remember for 30 days</label>
+                  <label htmlFor="remember-checkbox">Remember </label>
                 </div>
                 <a href="#" className="forgot-pass-link">
                   Forgot password?
@@ -194,7 +195,6 @@ const LoginAdmin = () => {
               </div>
               <div className="login-center-buttons">
                 <button type="submit">Log In</button>
-                <button type="button">Log In with Google</button>
               </div>
             </form>
           </div>

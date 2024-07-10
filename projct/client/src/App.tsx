@@ -6,6 +6,7 @@ import AdminHome from "./components/admin/AdminHome";
 import AdminProduct from "./components/admin/AdminProduct";
 import DetailProduct from "./components/user/DetailProduct";
 import LoginAdmin from "./components/admin/LoginAdmin";
+import AdminUser from "./components/admin/AdminUser";
 
 export default function App() {
   return (
@@ -17,7 +18,8 @@ export default function App() {
       <Route path="/adminProduct" element={<AdminProduct />} />
       <Route path="/adminHome" element={<AdminHome />} />
      <Route path="/login-admin" element={<LoginAdmin></LoginAdmin>}></Route>
-
+    <Route path="/adminUser" element={<AdminUser></AdminUser>}></Route>
+    <Route path ="/adminProduct" element ={<AdminProduct></AdminProduct>}></Route>
     </Routes>
   );
 }

@@ -225,6 +225,87 @@ export default function Home() {
             KHÁM PHÁ 4 HỌA TIẾT THỒNG LĨNH MÙA XUÂN - HÈ
           </b>
         </div>
+      </div>{" "}
+      <br /> <br />
+      <div className="flex text-center">
+        <b style={{ fontSize: "30px", width: "800px" }}>ĐĂNG KÝ BẢN TIN</b>
+        <p>
+          Đăng ký nhận bản tin Nem để được cập nhật những mẫu thiết kế mới nhất
+        </p>
+        <input
+          style={{ width: "550px", height: "50px" }}
+          type="text"
+          placeholder="Vui long nhap email..."
+        ></input>
+        <button
+          style={{
+            backgroundColor: "black",
+            color: "white",
+            width: "200px",
+            height: "50px",
+          }}
+        >
+          ĐĂNG KÝ
+        </button>
+      </div>
+      <br></br>
+      <div style={{ display: "flex", gap: "20px", justifyContent: "center" }}>
+        <img
+          src="https://mewxu.net/wp-content/uploads/2017/03/fb_icon.png"
+          style={{ width: "25px", borderRadius: "8px" }}
+        ></img>
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/640px-Instagram_logo_2022.svg.png"
+          style={{ width: "25px", borderRadius: "8px" }}
+        ></img>
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_4N37TIgWC_QLpspNwGddZH8DhzljeYMFnA&s"
+          style={{ width: "25px", borderRadius: "8px" }}
+        ></img>
+      </div>
+      <br></br>
+      <div
+        style={{
+          display: "flex",
+          backgroundColor: "black",
+          color: "white",
+          gap: "40px",
+        }}
+      >
+        <div>
+          <b>NEM FASHION - THỜI TRANG CÔNG SỞ</b>
+          <br></br>
+          <br></br>
+          <p>
+            Công ty TNHH Dịch vụ và Thương mại An Thành.<br></br>
+            Số ĐKKD 0107861393, Sở KHĐT Tp. Hà Nội cấp ngày 04/10/2017
+          </p>
+          <p>
+            Địa chỉ: Lô 1+2, Ô quy hoạch E.2/NO7 đường Lâm Hạ<br></br> phường Bồ
+            Đề, quận Long Biên, Hà Nội <br></br>Chăm sóc khách hàng:
+            0246.2591551 Mua hàng online: 0246.2909098<br></br> Email:
+            nemcskh@stripe-vn.com
+          </p>
+        </div>
+        <div>
+          <p style={{ display: "flex" }}>
+            Giới thiệu <br></br>Triết lý kinh doanh tại NEM Fashion <br></br>
+            NEM's Blog <br></br>Hệ thống showroom <br></br>Liên hệ
+          </p>
+        </div>
+        <div>
+          <p>
+            Chính sách giao nhận - Vận chuyển <br></br>Hướng dẫn thanh toán <br></br>Tra cứu đơn
+            hàng<br></br> Hướng dẫn chọn Size <br></br>Quy định đổi hàng<br></br> Quy định bảo hành và sửa
+            chữa <br></br>Khách hàng thân thiết
+          </p>
+         
+        </div>
+        <div>
+            <p>Phương thức thanh toán</p>
+            <img src="https://cdn.iconscout.com/icon/free/png-256/free-netbanking-credit-debit-card-bank-transaction-32302.png" style={{width:"80px"}}></img><br></br>
+            <img src="https://dangkywebvoibocongthuong.com/wp-content/uploads/2021/11/logo-da-thong-bao-bo-cong-thuong.png" style={{width:"100px"}}></img>
+          </div>
       </div>
     </>
   );

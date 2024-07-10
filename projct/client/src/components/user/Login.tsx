@@ -8,10 +8,10 @@ const Login = () => {
 
   return (
     <div className="login-main">
-      <div className="login-left"><img src="https://png.pngtree.com/png-vector/20221125/ourmid/pngtree-tie-logo-vector-clothing-clothes-card-vector-png-image_42299942.jpg" style={{width:"800px",height:"700px"}} /></div>
+      <div className="login-left"><img src="https://static.vecteezy.com/system/resources/previews/027/428/014/original/nem-logo-design-inspiration-for-a-unique-identity-modern-elegance-and-creative-design-watermark-your-success-with-the-striking-this-logo-vector.jpg" style={{width:"750px",height:"700px"}} /></div>
       <div className="login-right">
         <div className="login-right-container">
-          <div className="login-logo"><img src="https://static.ybox.vn/2021/12/6/1639833088609-httpswww.canva.comdesignDAEyyZUaL9oRXE44PMfR_WfJquvULhFzAedit%20(5).png" /></div>
+          <div className="login-logo"><img src="https://static.ybox.vn/2021/12/6/1639833088609-httpswww.canva.comdesignDAEyyZUaL9oRXE44PMfR_WfJquvULhFzAedit%20(5).png" style={{width:"200px"}} /></div>
           <div className="login-center">
             <h2>Welcome to NEM !</h2>
             <p>Please enter your details</p>
@@ -41,7 +41,7 @@ const Login = () => {
                 <div className="remember-div">
                   <input type="checkbox" id="remember-checkbox" />
                   <label htmlFor="remember-checkbox">
-                    Remember for 30 days
+                    Remember
                   </label>
                 </div>
                 <a href="#" className="forgot-pass-link">
@@ -50,10 +50,7 @@ const Login = () => {
               </div>
               <div className="login-center-buttons">
                 <button type="button">Log In</button>
-                <button type="button">
-                  {/* <img src={GoogleSvg} alt="" /> */}
-                  Log In with Google
-                </button>
+            
               </div>
             </form>
           </div>
