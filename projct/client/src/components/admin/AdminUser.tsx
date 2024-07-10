@@ -38,7 +38,7 @@ function AdminUser() {
   const handleAdd = () => {
     let valid = true;   
     if(!inputValue.userName){
-      error.userName = "Ten nguoi dung khong duoc de trong";
+      error.userName = "Ten nguời dung khong duoc de trong";
       valid = false;
     }else{
       error.userName = "";
