@@ -36,7 +36,7 @@ function AdminUser() {
     }
   };
   const handleAdd = () => {
-    let valid = true;
+    let valid = true;   
     if(!inputValue.userName){
       error.userName = "Ten nguoi dung khong duoc de trong";
       valid = false;
@@ -45,7 +45,7 @@ function AdminUser() {
     }
 
     if(!inputValue.email){
-      error.email = "Email khong duoc de trong";
+      error.email = "Email không duoc de trong";
       valid = false;
     }else{
       error.email = "";
