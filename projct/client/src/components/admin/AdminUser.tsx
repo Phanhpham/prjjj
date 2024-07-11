@@ -47,7 +47,7 @@ function AdminUser() {
   const handleAdd = async () => {
     let valid = true;
     if (!inputValue.userName) {
-      error.userName = "Tên tài khoản khong duoc de trong";
+      error.userName = "Tên tài khoản không duoc de trong";
       valid = false;
     } else {
       error.userName = "";
