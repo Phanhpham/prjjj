@@ -138,6 +138,7 @@ function AdminUser() {
                   <th>Ảnh</th>
                   <th>Giá tiền</th>
                   <th>Số lượng</th>
+                  <th>Trạng thái</th>
                   <th>Chức năng</th>
                 </tr>
               </thead>
@@ -148,6 +149,7 @@ function AdminUser() {
                   <td><img src ="https://product.hstatic.net/200000182297/product/12_d1100c03ecdd4dd49a03ed139aa67b93_master.jpg"></img></td>
                   <td>1,599,000đ</td>
                   <td>100</td>
+                  <td>Còn hàng</td>
                   
                   <td>
                     <button className="btn btn-primary">sửa</button>

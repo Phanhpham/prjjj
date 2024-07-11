@@ -1,8 +1,19 @@
 import { Carousel } from "react-bootstrap";
 import "../css/home.css";
 import Button from "react-bootstrap/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getAllProduct } from "../../services/product.service";
+import { Product } from "../../interface/admin";
 
 export default function Home() {
+  const productState = useSelector((state: any) => state.products.product);
+  console.log(productState);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllProduct());
+  }, []);
   return (
     <>
       <div>
@@ -92,100 +103,24 @@ export default function Home() {
       </div>
       <br></br>
       <h1 style={{ textAlign: "center" }}>SẢN PHẨM NỔI BẬT</h1>
-      <div style={{ display: "flex" }}>
-        <div>
-          <img
-            src="https://product.hstatic.net/200000182297/product/12_d1100c03ecdd4dd49a03ed139aa67b93_master.jpg"
-            style={{ width: "300px", paddingLeft: "50px" }}
-          ></img>
-          <p style={{ color: "grey", marginLeft: "50px" }}>
-            Đầm hoa sen D03932
-          </p>
-          <b style={{ marginLeft: "80px" }}>1,599,000₫</b>
-        </div>
-
-        <div>
-          <img
-            src="https://product.hstatic.net/200000182297/product/3_e0d0990edf964fba867237097090ec87_master.jpg"
-            style={{ width: "300px", paddingLeft: "50px" }}
-          ></img>
-          <p style={{ color: "grey", marginLeft: "50px" }}>
-            SƠ MI HỌA TIẾT SM01552
-          </p>
-          <b style={{ marginLeft: "110px" }}>779,000₫</b>
-        </div>
-
-        <div>
-          <img
-            src="https://product.hstatic.net/200000182297/product/4_9ffc94aee3564b71b410359272051438_master.jpg"
-            style={{ width: "300px", paddingLeft: "50px" }}
-          ></img>
-          <p style={{ color: "grey", marginLeft: "40px" }}>
-            ĐẦM SUÔNG ĐEN ĐÍNH CƯỜM
-          </p>
-          <b style={{ marginLeft: "120px" }}>1,779,000₫</b>
-        </div>
-
-        <div>
-          <img
-            src="https://product.hstatic.net/200000182297/product/12_9b9ca72572c847708666c49d876e5564_master.jpg"
-            style={{ width: "300px", paddingLeft: "50px" }}
-          ></img>
-          <p style={{ color: "grey", marginLeft: "50px" }}>
-            ĐẦM HOA THIẾT KẾ KÈM ĐAI
-          </p>
-          <b style={{ marginLeft: "120px" }}>1,259,000₫</b>
-        </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)" }}>
+        {productState.map((product: Product) => (
+          <div>
+            <img
+              src={product.image}
+              style={{ width: "300px", paddingLeft: "50px" }}
+            ></img>
+            <p style={{ color: "grey", marginLeft: "50px" }}>
+              {product.nameProduct}
+            </p>
+            <b style={{ marginLeft: "80px" }}>{product.price}</b>
+          </div>
+        ))}
       </div>
       <br></br>
-      <h1 style={{ textAlign: "center", fontFamily: "unset" }}>
-        ĐỘC QUYỀN ONLINE
-      </h1>
-      <br></br>
-      <div style={{ display: "flex" }}>
-        <div>
-          <img
-            src="https://product.hstatic.net/200000182297/product/3_1a6aa19f98ac4752ace1ee0e6e31a946_master.jpg"
-            style={{ width: "300px", paddingLeft: "50px" }}
-          ></img>
-          <p style={{ color: "grey", marginLeft: "50px" }}>
-            ĐẦM HOA NHÍ D40692
-          </p>
-          <b style={{ marginLeft: "90px" }}>699,000₫</b>
-        </div>
-        <div>
-          <img
-            src="https://product.hstatic.net/200000182297/product/3_90b3a15000ea460f925a624216846ec0_master.jpg"
-            style={{ width: "300px", paddingLeft: "50px" }}
-          ></img>
-          <p style={{ color: "grey", marginLeft: "50px" }}>
-            ĐẦM HOA NHÍ XANH D40572
-          </p>
-          <b style={{ marginLeft: "120px" }}>899,000₫</b>
-        </div>
-
-        <div>
-          <img
-            src="https://product.hstatic.net/200000182297/product/4_9505af4dba5a4aad9af063c145e2defb_master.jpg"
-            style={{ width: "300px", paddingLeft: "50px" }}
-          ></img>
-          <p style={{ color: "grey", marginLeft: "60px" }}>
-            ĐẦM TƠ HOA HỒNG D40602
-          </p>
-          <b style={{ marginLeft: "130px" }}>789,000₫</b>
-        </div>
-
-        <div>
-          <img
-            src="https://product.hstatic.net/200000182297/product/2_7d112bfa60704ff4a1f9eddfcae25252_master.jpg"
-            style={{ width: "300px", paddingLeft: "50px" }}
-          ></img>
-          <p style={{ color: "grey", marginLeft: "50px" }}>
-            ĐẦM HOA NHÍ CỔ TRỤ D40112
-          </p>
-          <b style={{ marginLeft: "130px" }}>700,000₫</b>
-        </div>
-      </div>
+      {/* <h1 style={{ textAlign: "center", fontFamily: "unset" }}>
+        ĐỘC QUYỀN ONLINE */}
+      {/* </h1> */}
       <div>
         <img
           src="https://file.hstatic.net/200000182297/file/banner_web_15_02_23_bc417e51b3bb4665845c5e80fa268e1c.jpg"
@@ -295,17 +230,24 @@ export default function Home() {
         </div>
         <div>
           <p>
-            Chính sách giao nhận - Vận chuyển <br></br>Hướng dẫn thanh toán <br></br>Tra cứu đơn
-            hàng<br></br> Hướng dẫn chọn Size <br></br>Quy định đổi hàng<br></br> Quy định bảo hành và sửa
-            chữa <br></br>Khách hàng thân thiết
+            Chính sách giao nhận - Vận chuyển <br></br>Hướng dẫn thanh toán{" "}
+            <br></br>Tra cứu đơn hàng<br></br> Hướng dẫn chọn Size <br></br>Quy
+            định đổi hàng<br></br> Quy định bảo hành và sửa chữa <br></br>Khách
+            hàng thân thiết
           </p>
-         
         </div>
         <div>
-            <p>Phương thức thanh toán</p>
-            <img src="https://cdn.iconscout.com/icon/free/png-256/free-netbanking-credit-debit-card-bank-transaction-32302.png" style={{width:"80px"}}></img><br></br>
-            <img src="https://dangkywebvoibocongthuong.com/wp-content/uploads/2021/11/logo-da-thong-bao-bo-cong-thuong.png" style={{width:"100px"}}></img>
-          </div>
+          <p>Phương thức thanh toán</p>
+          <img
+            src="https://cdn.iconscout.com/icon/free/png-256/free-netbanking-credit-debit-card-bank-transaction-32302.png"
+            style={{ width: "80px" }}
+          ></img>
+          <br></br>
+          <img
+            src="https://dangkywebvoibocongthuong.com/wp-content/uploads/2021/11/logo-da-thong-bao-bo-cong-thuong.png"
+            style={{ width: "100px" }}
+          ></img>
+        </div>
       </div>
     </>
   );

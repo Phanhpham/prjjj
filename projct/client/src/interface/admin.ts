@@ -22,3 +22,12 @@ export interface AddUser{
     password: string,
     confirmPassword: string,
 }
+
+export interface Product{
+    id: number,
+    nameProduct: string,
+    image: string,
+    price: string,
+    stock: number,
+    status: string,
+}
