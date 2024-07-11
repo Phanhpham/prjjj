@@ -7,7 +7,7 @@ export default function AdminHome() {
   const handleLogOut = () => {
     const logout = confirm("chắc chắn muốn đăng xuất?");
     if (logout) {
-      navigate("");
+      navigate("/login-admin");
     }
   };
   return (

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Menu from "../Menu";
 import "../scss/adminHome.scss";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -7,12 +7,21 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { User } from "../../interface/user";
-import { Users } from "../../interface/admin";
+import { AddUser, Users } from "../../interface/admin";
+import { useDispatch, useSelector } from "react-redux";
+import { addUser, getAllUser } from "../../services/admin.service";
+import { format } from "date-fns";
 
 function AdminUser() {
+  const userState = useSelector((state: any) => state.users.user);
+  console.log(userState);
+
+  useEffect(() => {
+    dispatch(getAllUser());
+  }, []);
   const [show, setShow] = useState(false);
-  const [inputValue, setInputValue] = useState<Users>({
-    id: Math.ceil(Math.random() * 10000),
+  const dispatch = useDispatch();
+  const [inputValue, setInputValue] = useState<AddUser>({
     userName: "",
     email: "",
     password: "",
@@ -35,28 +44,65 @@ function AdminUser() {
       navigate("");
     }
   };
-  const handleAdd = () => {
-    let valid = true;   
-    if(!inputValue.userName){
-      error.userName = "Ten nguời dung khong duoc de trong";
+  const handleAdd = async () => {
+    let valid = true;
+    if (!inputValue.userName) {
+      error.userName = "Tên tài khoản khong duoc de trong";
       valid = false;
-    }else{
+    } else {
       error.userName = "";
     }
 
-    if(!inputValue.email){
+    if (!inputValue.email) {
       error.email = "Email không duoc de trong";
       valid = false;
-    }else{
+    } else {
       error.email = "";
     }
 
-    if(!inputValue.password){
-      error.password = "Mat khau khong duoc de trong"
+    if (!inputValue.password) {
+      error.password = "Mat khau khong duoc de trong";
       valid = false;
-    }else{
-      error.password = ""
+    } else {
+      error.password = "";
     }
+
+    if (!inputValue.confirmPassword) {
+      error.confirmPassword = "Xác nhận mat khau khong duoc de trong";
+      valid = false;
+    } else {
+      error.confirmPassword = "";
+    }
+
+    setError({ ...error });
+
+    if (valid) {
+      // Khởi tạo mới 1 đối tượng
+      const newUser = {
+        userName: inputValue.userName,
+        email: inputValue.email,
+        password: inputValue.password,
+        confirmPassword: inputValue.confirmPassword,
+        created_at: format(new Date(), "dd/MM/yyyy HH:mm:ss"),
+        status: 0,
+      };
+      await dispatch(addUser(newUser));
+      setShow(false);
+      setInputValue({
+        userName: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      });
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setInputValue({
+      ...inputValue,
+      [name]: value,
+    });
   };
   return (
     <div style={{ display: "flex" }}>
@@ -118,22 +164,55 @@ function AdminUser() {
                     className="mb-3"
                     controlId="exampleForm.ControlInput1"
                   >
-                    <Form.Label>Tên người dùng</Form.Label>
-                    <Form.Control type="text" placeholder="Nhập tên" />
+                    <Form.Label>Tên</Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Nhập tên"
+                      name="userName"
+                      value={inputValue.userName}
+                      onChange={handleChange}
+                    />
+                    {error.userName && (
+                      <span style={{ color: "red", fontSize: 12 }}>
+                        {error.userName}
+                      </span>
+                    )}
                   </Form.Group>
                   <Form.Group
                     className="mb-3"
                     controlId="exampleForm.ControlInput1"
                   >
                     <Form.Label>Email</Form.Label>
-                    <Form.Control type="text" placeholder="Nhập email" />
+                    <Form.Control
+                      type="text"
+                      placeholder="Nhập email"
+                      name="email"
+                      value={inputValue.email}
+                      onChange={handleChange}
+                    />
+                    {error.email && (
+                      <span style={{ color: "red", fontSize: 12 }}>
+                        {error.email}
+                      </span>
+                    )}
                   </Form.Group>
                   <Form.Group
                     className="mb-3"
                     controlId="exampleForm.ControlInput1"
                   >
                     <Form.Label>Nhập mật khẩu</Form.Label>
-                    <Form.Control type="text" placeholder="Nhập mật khẩu" />
+                    <Form.Control
+                      type="password"
+                      placeholder="Nhập mật khẩu"
+                      name="password"
+                      value={inputValue.password}
+                      onChange={handleChange}
+                    />
+                    {error.password && (
+                      <span style={{ color: "red", fontSize: 12 }}>
+                        {error.password}
+                      </span>
+                    )}
                   </Form.Group>
                   <Form.Group
                     className="mb-3"
@@ -141,9 +220,17 @@ function AdminUser() {
                   >
                     <Form.Label>Xác nhận mật khẩu</Form.Label>
                     <Form.Control
-                      type="text"
+                      type="password"
                       placeholder="Nhập xác nhận mật khẩu"
+                      name="confirmPassword"
+                      value={inputValue.confirmPassword}
+                      onChange={handleChange}
                     />
+                    {error.confirmPassword && (
+                      <span style={{ color: "red", fontSize: 12 }}>
+                        {error.confirmPassword}
+                      </span>
+                    )}
                   </Form.Group>
                 </Form>
               </Modal.Body>
@@ -184,94 +271,19 @@ function AdminUser() {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>phanh2005</td>
-                  <td>phanh123@gmail.com</td>
-                  <td>24/07/2023</td>
-                  <td>Đang hoạt động</td>
-                  <td>
-                    <button className="btn btn-primary">Xem</button>
-                    <button className="btn btn-danger">Chặn</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>ha2005</td>
-                  <td>ha123</td>
-                  <td>21/05/2023</td>
-                  <td>Đang hoạt động</td>
-                  <td>
-                    <button className="btn btn-primary">Chặn</button>
-                    <button className="btn btn-danger">Xóa</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>hai2005</td>
-                  <td>hai123</td>
-                  <td>30/05/2023</td>
-                  <td>Đang hoạt động</td>
-                  <td>
-                    <button className="btn btn-primary">Chặn</button>
-                    <button className="btn btn-danger">Xóa</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>phuonga2005</td>
-                  <td>phuonga123</td>
-                  <td>24/08/2023</td>
-                  <td>Đang hoạt động</td>
-                  <td>
-                    <button className="btn btn-primary">Chặn</button>
-                    <button className="btn btn-danger">Xóa</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>trang2005</td>
-                  <td>trang123</td>
-                  <td>11/09/2023</td>
-                  <td>Đang hoạt động</td>
-                  <td>
-                    <button className="btn btn-primary">Chặn</button>
-                    <button className="btn btn-danger">Xóa</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>khanh2005</td>
-                  <td>khanh123</td>
-                  <td>29/10/2023</td>
-                  <td>Đang hoạt động</td>
-                  <td>
-                    <button className="btn btn-primary">Chặn</button>
-                    <button className="btn btn-danger">Xóa</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>tuan2005</td>
-                  <td>tuan123</td>
-                  <td>28/05/2023</td>
-                  <td>Đang hoạt động</td>
-                  <td>
-                    <button className="btn btn-primary">Chặn</button>
-                    <button className="btn btn-danger">Xóa</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>tung2005</td>
-                  <td>tung123</td>
-                  <td>24/12/2023</td>
-                  <td>Đang hoạt động</td>
-                  <td>
-                    <button className="btn btn-primary">Chặn</button>
-                    <button className="btn btn-danger">Xóa</button>
-                  </td>
-                </tr>
+                {userState.map((user: Users, index: number) => (
+                  <tr>
+                    <td>{index + 1}</td>
+                    <td>{user.userName}</td>
+                    <td>{user.email}</td>
+                    <td>{user.created_at}</td>
+                    <td>Đang hoạt động</td>
+                    <td>
+                      <button className="btn btn-primary">Xem</button>
+                      <button className="btn btn-danger">Chặn</button>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>

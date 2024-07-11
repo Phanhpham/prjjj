@@ -9,7 +9,15 @@ export interface Admins {
 
 export interface Users{
     id: number
-    userName: string,
+    userName: string
+    email: string,
+    created_at: string,
+    password: string,
+    confirmPassword: string,
+    status: number
+}
+export interface AddUser{
+    userName: string
     email: string,
     password: string,
     confirmPassword: string,

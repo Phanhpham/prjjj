@@ -1,5 +1,5 @@
-import { addUser, getAllUser } from '../../src/services/admin.service' ;
-import { User } from '../../src/interface/user'
+import { addUser, getAllUser } from '../../services/admin.service' ;
+import { User } from '../../interface/user'
 import { createSlice } from "@reduxjs/toolkit"
 const userState: User[] = [];
 

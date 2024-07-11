@@ -18,68 +18,31 @@
   },
   "users": [
     {
-      "id": 1,
-      "firstName": "Phạm",
-      "lastName": "Phanh",
-      "email": "phanhne2005@gmail.com",
-      "phone": "0987372863",
-      "password": "12345"
+      "userName": "hoang2005",
+      "email": "hoang2005@gmail.com",
+      "password": "hoang2005",
+      "confirmPassword": "hoang2005",
+      "created_at": "11/07/2024 01:34:34",
+      "status": 0,
+      "id": 1
     },
     {
-      "id": 2,
-      "firstName": "Phạm",
-      "lastName": "Hà",
-      "email": "ha2005@gmail.com",
-      "phone": "0938842032",
-      "password": "123456"
-    },
-    {
-      "id": 3,
-      "firstName": "Phạm",
-      "lastName": "Hùng",
-      "email": "hung2005@gmail.com",
-      "phone": "0987567893",
-      "password": "1234567"
-    },
-    {
-      "firstName": "Pham",
-      "lastName": "Anh",
-      "email": "ppanh775@gamail.com",
-      "password": "panh2005",
-      "confirmPassword": "panh2005",
-      "id": 4
-    },
-    {
-      "firstName": "Pham",
-      "lastName": "anh",
-      "email": "phamanh12@gmail.com",
-      "password": "panh2005",
-      "confirmPassword": "panh2005",
-      "id": 5
-    },
-    {
-      "firstName": "Pham",
-      "lastName": "Anh",
-      "email": "ppanh77@gamail.com",
-      "password": "panh2005",
-      "confirmPassword": "panh2005",
-      "id": 6
-    },
-    {
-      "firstName": "Pham",
-      "lastName": "anh",
+      "userName": "phanh2005",
       "email": "ppanh75@gamail.com",
-      "password": "panh2005",
-      "confirmPassword": "panh2005",
-      "id": 7
+      "password": "phanh2005",
+      "confirmPassword": "phanh2005",
+      "created_at": "11/07/2024 01:44:09",
+      "status": 0,
+      "id": 2
     },
     {
-      "firstName": "Pham",
-      "lastName": "anh",
-      "email": "phamanh1@gmail.com",
-      "password": "panh2005",
-      "confirmPassword": "panh2005",
-      "id": 8
+      "userName": "PHANH",
+      "email": "phanh@gmail.com",
+      "password": "12345",
+      "confirmPassword": "12345",
+      "created_at": "11/07/2024 09:03:13",
+      "status": 0,
+      "id": 3
     }
   ]
 }
