@@ -25,16 +25,14 @@ export default function Register() {
 
   const [inputValue, setInputValue] = useState<User>({
     id: Math.ceil(Math.random() * 10000),
-    firstName: "",
-    lastName: "",
+    userName: "",
     email: "",
     confirmPassword: "",
     password: "",
   });
 
   const [error, setError] = useState({
-    firstName: "",
-    lastName: "",
+    userName: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -44,18 +42,12 @@ export default function Register() {
     e.preventDefault();
     console.log(1234);
     let valid = true;
-    if (!inputValue.firstName) {
-      error.firstName = "Họ không được để trống";
-      valid = false;
-    } else {
-      error.firstName = "";
-    }
 
-    if (!inputValue.lastName) {
-      error.lastName = "Ten khong duoc de trong";
+    if (!inputValue.userName) {
+      error.userName = "Ten khong duoc de trong";
       valid = false;
     } else {
-      error.lastName = "";
+      error.userName = "";
     }
 
     if (!inputValue.email) {
@@ -93,8 +85,7 @@ export default function Register() {
     // Kiem tra dang ky thanh cong
     if (valid) {
       const newUser = {
-        firstName: inputValue.firstName,
-        lastName: inputValue.lastName,
+        userName: inputValue.userName,
         email: inputValue.email,
         password: inputValue.password,
         confirmPassword: inputValue.confirmPassword,
@@ -123,39 +114,21 @@ export default function Register() {
               đãi tốt hơn!
             </p>
             <br />
-            <label htmlFor="name">Họ</label>
-            <br></br>
-            <input
-              className="surname"
-              name="firstName"
-              value={inputValue.firstName}
-              type="text"
-              placeholder="Name"
-              id=""
-              onChange={handleChange}
-            />{" "}
-            <br />
-            {error.firstName && (
-              <span style={{ color: "red", fontSize: 12 }}>
-                {error.firstName}
-              </span>
-            )}
-            <br></br>
             <label htmlFor="name">Tên</label>
             <br></br>
             <input
               className="lastname"
-              name="lastName"
-              value={inputValue.lastName}
+              name="userName"
+              value={inputValue.userName}
               type="text"
               placeholder="Lastname"
               onChange={handleChange}
               id=""
             />
             <br />
-            {error.lastName && (
+            {error.userName && (
               <span style={{ color: "red", fontSize: 12 }}>
-                {error.lastName}
+                {error.userName}
               </span>
             )}
             <br />

@@ -8,7 +8,7 @@ import { Product } from "../../interface/admin";
 
 export default function Home() {
   const productState = useSelector((state: any) => state.products.product);
-  console.log(productState);
+  console.log("productState", productState);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -52,11 +52,15 @@ export default function Home() {
             </div>
             <div className="account">
               <i className="fa-solid fa-user"></i>
-              <a href="">Tài khoản</a>
+              <a href="" style={{ color: "black" }}>
+                Tài khoản
+              </a>
             </div>
             <div className="cart">
               <i className="fa-solid fa-cart-shopping"></i>
-              <a href="">Giỏ hàng</a>
+              <a href="" style={{ color: "black" }}>
+                Giỏ hàng
+              </a>
             </div>
           </div>
           <div className="line"></div>

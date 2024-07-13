@@ -135,9 +135,10 @@ export default function Home() {
             ></img>
             <br></br>
             <br></br>
-            
+
             <p>Số lượng</p>
-            <input style={{width:"60px"}} type="number"></input><br></br>
+            <input style={{ width: "60px" }} type="number" min={1}></input>
+            <br></br>
             <br></br>
             <button
               style={{

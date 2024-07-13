@@ -1,4 +1,4 @@
-import { addUser, getAllUser } from '../../services/admin.service' ;
+import { addUser, getAllUser, searchUser } from '../../services/admin.service' ;
 import { User } from '../../interface/user'
 import { createSlice } from "@reduxjs/toolkit"
 const userState: User[] = [];
@@ -16,6 +16,9 @@ const userReducer = createSlice({
         })
         .addCase(addUser.fulfilled, (state, action) => {
             state.user.push(action.payload);
+        })
+        .addCase(searchUser.fulfilled, (state, action) => {
+            state.user = action.payload;
         })
     }
 })

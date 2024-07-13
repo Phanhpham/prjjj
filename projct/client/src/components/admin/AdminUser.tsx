@@ -9,7 +9,7 @@ import Modal from "react-bootstrap/Modal";
 import { User } from "../../interface/user";
 import { AddUser, Users } from "../../interface/admin";
 import { useDispatch, useSelector } from "react-redux";
-import { addUser, getAllUser } from "../../services/admin.service";
+import { addUser, getAllUser, searchUser } from "../../services/admin.service";
 import { format } from "date-fns";
 
 function AdminUser() {
@@ -20,6 +20,8 @@ function AdminUser() {
     dispatch(getAllUser());
   }, []);
   const [show, setShow] = useState(false);
+  const [search, setSearch] = useState<string>("");
+  const [selectedUser, setSelectedUser] = useState<Users | null>(null);
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState<AddUser>({
     userName: "",
@@ -35,8 +37,17 @@ function AdminUser() {
     confirmPassword: "",
   });
 
+  const [shows, setShows] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleCloses = () => setShows(false);
+  const handleShows = (id: number) => {
+    const showInfo = userState.find((user: Users) => user.id === id);
+    if (showInfo) {
+      setSelectedUser(showInfo);
+      setShows(true);
+    }
+  };
   const navigate = useNavigate();
   const handleLogOut = () => {
     const logout = confirm("chắc chắn muốn đăng xuất?");
@@ -103,6 +114,11 @@ function AdminUser() {
       ...inputValue,
       [name]: value,
     });
+  };
+
+  const handleSearch = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+    await dispatch(searchUser(e.target.value));
   };
   return (
     <div style={{ display: "flex" }}>
@@ -247,7 +263,11 @@ function AdminUser() {
           <div className="user-info">
             <div className="search-box">
               <i className="fa-solid fa-search"></i>
-              <input type="text" placeholder="Tìm kiếm ở đây" />
+              <input
+                type="text"
+                placeholder="Tìm kiếm ở đây"
+                onChange={handleSearch}
+              />
             </div>
             <img
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV1mHHzOnO1BG__4Ai6GlaZpfRztsrQM1fols7meZqlY6arSu0mvtlHSArvUHZRquwnA0&usqp=CAU"
@@ -279,13 +299,51 @@ function AdminUser() {
                     <td>{user.created_at}</td>
                     <td>Đang hoạt động</td>
                     <td>
-                      <button className="btn btn-primary">Xem</button>
+                      <Button
+                        variant="primary"
+                        onClick={() => handleShows(user.id)}
+                      >
+                        Xem
+                      </Button>
                       <button className="btn btn-danger">Chặn</button>
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
+            <Modal show={shows} onHide={handleCloses}>
+              <Modal.Header closeButton>
+                <Modal.Title>Thông tin chi tiết</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                {selectedUser && (
+                  <div style={{ display: "flex", gap: 50 }}>
+                    <div>
+                      <p>Tên tài khoản: {selectedUser?.userName}</p>
+                      <p>Email: {selectedUser.email}</p>
+                      <p>
+                        Trạng thái:{" "}
+                        {selectedUser.status === 0 ? "Hoạt động" : "Bị chặn"}
+                      </p>
+                      <p>Ngày đăng ký: {selectedUser.created_at}</p>
+                    </div>
+                    <div>
+                      <img
+                        src="https://cellphones.com.vn/sforum/wp-content/uploads/2023/10/avatar-trang-4.jpg"
+                        alt=""
+                        style={{ width: 200, height: 200 }}
+                      />
+                    </div>
+                  </div>
+                )}
+              </Modal.Body>
+
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleCloses}>
+                  Đóng
+                </Button>
+              </Modal.Footer>
+            </Modal>
           </div>
         </div>
       </div>

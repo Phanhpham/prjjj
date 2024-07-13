@@ -16,10 +16,11 @@ const Login = () => {
             <h2>Welcome to NEM !</h2>
             <p>Please enter your details</p>
             <form>
-              <input type="email" placeholder="Email" />
+              <input type="email" placeholder="Email" onChange={handleChange}/>
               <div className="pass-input-div">
                 <input
                   type={showPassword ? "text" : "password"}
+                  onChange={handleChange}
                   placeholder="Password"
                 />
                 {showPassword ? (
